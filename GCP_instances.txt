@@ -1,0 +1,9 @@
+1. gcloud compute networks subnets create net2 --project=tokyo-portal-304417 --range=10.0.2.0/24 --network=net3 --region=us-west1
+2. gcloud compute instances create instance-2 --zone=us-central1-a --machine-type=n1-standard-1 --boot-disk-size=10GB --boot-disk-type=pd-standard
+3. cloud compute  firewall-rules create test --direction=INGRESS --priority=1000 --network=default --action=ALLOW --rules=tcp:8080,tcp:8290,tcp:22 --source-ranges=0.0.0.0/0
+
+gcloud compute firewall-rules create test2 --direction=INGRESS --priority=1000 --network=default --action=ALLOW --rules=tcp:3389 --source-ranges=0.0.0.0/0
+4. gcloud deployment-manager deployments
+
+Максим Родионов, [22.02.21 16:54]
+gcloud beta compute --project=tokyo-portal-304417 instances create instance-2 --zone=us-central1-a --machine-type=n1-standard-1 --subnet=default --network-tier=PREMIUM --maintenance-policy=MIGRATE --service-account=777859892187-compute@developer.gserviceaccount.com --scopes=https://www.googleapis.com/auth/devstorage.read_only,https://www.googleapis.com/auth/logging.write,https://www.googleapis.com/auth/monitoring.write,https://www.googleapis.com/auth/servicecontrol,https://www.googleapis.com/auth/service.management.readonly,https://www.googleapis.com/auth/trace.append --tags=http-server,https-server --image=ubuntu-2004-focal-v20210211 --image-project=ubuntu-os-cloud --boot-disk-size=10GB --boot-disk-type=pd-balanced --boot-disk-device-name=instance-2 --no-shielded-secure-boot --shielded-vtpm --shielded-integrity-monitoring --reservation-affinity=any
